@@ -8,28 +8,21 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           centerTitle: false,
-          title: Text("Home"),
+          title: Text("Gerador de Frases Aletórias"),
           backgroundColor: Colors.grey,
       ),
       body: Center(
         child: Column(
           children: [
             Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 10)
+                padding: EdgeInsets.fromLTRB(20, 200, 20, 10)
             ),
-            Text("Login:",
+            Text("FRASE ALEATÓRIA ENTRA AQUI",
               style: TextStyle(
-                fontWeight: FontWeight.w200,
+                fontSize: 30,
+                fontWeight: FontWeight.normal,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
-              child: TextField(
-
-              ) ,
-            ),
-
-
           ],
         ),
       ),
