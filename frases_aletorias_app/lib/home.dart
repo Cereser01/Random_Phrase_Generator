@@ -217,7 +217,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
           centerTitle: false,
           title: const Text("Gerador de Frases Aletórias"),
-          backgroundColor: Colors.grey,
+          //backgroundColor: Colors.grey,
       ),
       body: Center(
         child: Padding(
