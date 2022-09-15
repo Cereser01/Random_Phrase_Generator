@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Home.dart';
+import 'home.dart';
 
 void main() {
 
@@ -9,6 +9,6 @@ void main() {
     theme: ThemeData(
       brightness: Brightness.dark,
     ),
-    home: Home(),
+    home: const Home(),
   ));
 }
