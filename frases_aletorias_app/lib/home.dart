@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
     "Men have two moods: Automation and beating wildlife with stick",
     "Every time an old lady dies, a Jesus picture ends up in a Goodwill.",
     "According to Dante, the deepest levels of hell are Frozen (2013) from Walt Disney Animation Studios",
-    "So apparently the bullying advice hotline is for 'Victims'",
+    "So apparently the bullying advice hotline is for 'Victims'.",
     "Listen, who hasn't done some fucked up shit in the Balkans?",
     "You don't have to treat them humanely if they aren't human.",
     "The Boston area is a pvp enabled zone",
@@ -133,7 +133,7 @@ class _HomeState extends State<Home> {
     "Nihilism leads to life losing its meaning. Hedonism leads to pleasure losing its meaning. Only the twice tied cock shuffle leads to true happiness.",
     "The internet is a joke and we are the punchline. Man was destined for the inferno and yet by some act of cruelty or negligence, we have remained. Our days are numbered, and we will not be so lucky as to be given a quick death. Prepare to pog for the last time.",
     "Help! Someone please help! Dad fell into the cum shaft.",
-    "Ff you see crayons do not eat them. They can be booby trapped so resist the urge to indulge in a 24 pack of deliciousness.",
+    "If you see crayons do not eat them. They can be booby trapped so resist the urge to indulge in a 24 pack of deliciousness.",
     "Pepe is the original NFT. Rare, strange, collectable and useless.",
     "Aside for the internal problems of each country nothing really happens in South America, I guess that's why a lot of GAMERS who love GAMING MOMENTS move here",
     "William Shakespeare did not exist. His plays were masterminded in 1589 by Francis Bacon, who used an Ouija board to enslave play-writing ghosts.",
@@ -202,9 +202,28 @@ class _HomeState extends State<Home> {
     //"Jaisson Potrich dos Reis",
     "Kanye West",
     "Raul Seixas",
-    "Bishop George Berkeley.",
+    "Bishop George Berkeley",
     "Garfield",
     "King Julian",
+    "Kuzco",
+    "Salvador Dalí",
+    "Lady Gaga",
+    //"Millie Bobby Brown",
+    "Cleo Pires",
+    "William Boner",
+    "Jhonny Depp",
+    "Quentin Tarantino",
+    "James Bond",
+    "Júlio Spezzia de Souza",
+    "Mozart",
+    "Gabriel, o Pensador",
+    "Saddam Hussein",
+    "Paulo Guedes",
+    "Felipe Smith",
+    "Vladmir Lenin",
+    "Cazuza",
+
+
   ];
 
   var _oneshot = true;
@@ -269,7 +288,7 @@ class _HomeState extends State<Home> {
                       }
 
                       _random = Random();
-                      if (_frase < listaFrases.length && _frase >= 0) {
+                      if (_frase < (listaFrases.length - 1) && _frase >= 0) {
                         _frase += 1;
                       }else{
                         listaFrases.shuffle;
