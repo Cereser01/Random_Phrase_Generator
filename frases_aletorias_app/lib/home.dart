@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import "dart:math";
+import 'clouds.dart';
 
 class Home extends StatefulWidget{
   const Home({Key? key}) : super(key: key);
@@ -128,7 +130,7 @@ class _HomeState extends State<Home> {
     "The thinking man knows that flinging your own shit like a distressed gorilla is erotic and makes her feel dominated.",
     "i'll be honest, my parents do NOT care for my frog postin'",
     "Fat people live near swamps. To lose weight simply move further away from your closest swamp.",
-    "Being nice is fine, but don't only be nice. It's not a personality in itself.That's why im also racist",
+    "Being nice is fine, but don't only be nice. It's not a personality in itself. That's why im also racist",
     "I like to rhyme and commit crime",
     "Nihilism leads to life losing its meaning. Hedonism leads to pleasure losing its meaning. Only the twice tied cock shuffle leads to true happiness.",
     "The internet is a joke and we are the punchline. Man was destined for the inferno and yet by some act of cruelty or negligence, we have remained. Our days are numbered, and we will not be so lucky as to be given a quick death. Prepare to pog for the last time.",
@@ -197,9 +199,9 @@ class _HomeState extends State<Home> {
     "Madre Teresa de Calcutá",
     "Jesus Cristo",
     "Leonardo Da Vinci",
-    "Luana Ceresér",
+    //"Luana Ceresér",
     //"Martim Raeder",
-    //"Jaisson Potrich dos Reis",
+    "Jaisson Potrich dos Reis",
     "Kanye West",
     "Raul Seixas",
     "Bishop George Berkeley",
@@ -222,13 +224,42 @@ class _HomeState extends State<Home> {
     "Felipe Smith",
     "Vladmir Lenin",
     "Cazuza",
-
-
   ];
 
   var _oneshot = true;
   var _frase = 0;
   var _random = Random();
+
+  void NovaFrase(){
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Clouds()));
+
+    Timer(const Duration(seconds: 1), () {
+      Navigator.pop(context);
+    });
+
+    Timer(const Duration(seconds: 1),(){
+      setState(() {
+
+      if(_oneshot == true){
+        listaFrases.shuffle();
+        _oneshot = false;
+      }
+
+      _random = Random();
+      if (_frase < (listaFrases.length - 1) && _frase >= 0) {
+        _frase += 1;
+      }else{
+        listaFrases.shuffle;
+        _frase = 0;
+      }
+
+    });
+    });
+    
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -236,9 +267,15 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
           centerTitle: false,
           title: const Text("Gerador de Frases Aletórias"),
+          actions: [
+            ElevatedButton(
+                onPressed: (){NovaFrase();},
+                child: Text("Nova Frase"))
+          ],
           //backgroundColor: Colors.grey,
       ),
-      body: Center(
+      body:
+      Center(
         child: Padding(
           padding: const EdgeInsets.all(30),
           child: ListView(
@@ -253,7 +290,7 @@ class _HomeState extends State<Home> {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
-                    fontSize: 50,
+                    fontSize: 30,
                   ),
                 ),
               ),
@@ -266,7 +303,7 @@ class _HomeState extends State<Home> {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
-                    fontSize: 30,
+                    fontSize: 20,
                   ),
 
                 ),
@@ -274,32 +311,17 @@ class _HomeState extends State<Home> {
               ),
 
 
-              Container(
+              /*Container(
                 //Botão de mudar de frase
                 alignment: Alignment.bottomRight,
                 padding: const EdgeInsets.only(top: 50),
                 child: ElevatedButton(
                   onPressed: (){
-                    setState(() {
-
-                      if(_oneshot == true){
-                        listaFrases.shuffle();
-                        _oneshot = false;
-                      }
-
-                      _random = Random();
-                      if (_frase < (listaFrases.length - 1) && _frase >= 0) {
-                        _frase += 1;
-                      }else{
-                        listaFrases.shuffle;
-                        _frase = 0;
-                      }
-
-                    });
+                    NovaFrase();
                   },
                   child: const Text("Nova frase"),
                 ),
-              ),
+              ),*/
 
             ],
           )
