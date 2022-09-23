@@ -28,11 +28,9 @@ class _HomeState extends State<Home> {
   List<String> listaFrasesNormal = [
 
     "O homem não é mais do que a série dos seus atos.",
-    "A amizade é semelhante a um bom café; uma vez frio, não se aquece sem perder bastante do primeiro sabor.",
-    "Podemos julgar o coração de um homem pela forma como ele trata os animais.",
-    "O homem não é nada além daquilo que a educação faz dele.",
     "Toda reforma interior e toda mudança para melhor dependem exclusivamente da aplicação do nosso próprio esforço.",
     "Cada qual sabe amar a seu modo; o modo pouco importa; o essencial é que saiba amar.",
+    "O homem não é nada além daquilo que a educação faz dele.",
     "O conhecimento serve para encantar as pessoas. Não para humilhá-las.",
     "As raízes da educação são amargas, mas o fruto é doce.",
     "A educação é a arma mais poderosa que você pode usar para mudar o mundo.",
@@ -41,16 +39,16 @@ class _HomeState extends State<Home> {
     "Deixa-te disso criança, deixa de orgulho, sossegas, não vês que a vida é um oceano por onde o acaso navega.",
     "A gente foge da solidão quando tem medo dos próprios pensamentos.",
     "A arte existe porque a vida não basta.",
+    "Podemos julgar o coração de um homem pela forma como ele trata os animais.",
     "Democracia é oportunizar a todos o mesmo ponto de partida. Quanto ao ponto de chegada, depende de cada um.",
+    "A amizade é semelhante a um bom café; uma vez frio, não se aquece sem perder bastante do primeiro sabor.",
   ];
 
   List<String> listaAutoresNormal = [
     "Georg Wilhelm Friedrich Hegel",
     "Immanuel Kant",
-    "Immanuel Kant",
-    "Immanuel Kant",
-    "Immanuel Kant",
     "Machado de Assis",
+    "Immanuel Kant",
     "Mário Sérgio Cortella",
     "Aristóteles",
     "Nelson Mandela",
@@ -59,7 +57,9 @@ class _HomeState extends State<Home> {
     "Gonçalves Dias",
     "Érico Veríssimo",
     "Ferreira Gullar",
+    "Immanuel Kant",
     "Fernando Sabino",
+    "Immanuel Kant",
   ];
 
    List<String> listaFrasesDoidao = [
