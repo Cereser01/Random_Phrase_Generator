@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:animations/animations.dart';
+import 'package:flutter/animation.dart';
 
 class Clouds extends StatelessWidget{
   const Clouds({Key? key}) : super(key: key);
@@ -11,16 +11,11 @@ class Clouds extends StatelessWidget{
 
     return Scaffold(
       body:
-
-      Center(
-        child: ListView(
-          children: [
-            Container(
-              child: Image.asset("nightsky.jpg"),
-            ),
-          ],
+      Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage("nightsky.jpg"), fit: BoxFit.cover),
         ),
-      ),
+        ),
 
     );
 

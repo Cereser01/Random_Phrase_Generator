@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import "dart:math";
 import 'clouds.dart';
 
@@ -12,7 +13,56 @@ class Home extends StatefulWidget{
 
 class _HomeState extends State<Home> {
 
-   List<String> listaFrases = [
+  List<String> listaFrases = [
+
+    "Bem vindo ao gerador de frases aleatórias."
+
+  ];
+
+  List<String> listaAutores = [
+
+    "Bruno Ceresér"
+
+  ];
+
+  List<String> listaFrasesNormal = [
+
+    "O homem não é mais do que a série dos seus atos.",
+    "A amizade é semelhante a um bom café; uma vez frio, não se aquece sem perder bastante do primeiro sabor.",
+    "Podemos julgar o coração de um homem pela forma como ele trata os animais.",
+    "O homem não é nada além daquilo que a educação faz dele.",
+    "Toda reforma interior e toda mudança para melhor dependem exclusivamente da aplicação do nosso próprio esforço.",
+    "Cada qual sabe amar a seu modo; o modo pouco importa; o essencial é que saiba amar.",
+    "O conhecimento serve para encantar as pessoas. Não para humilhá-las.",
+    "As raízes da educação são amargas, mas o fruto é doce.",
+    "A educação é a arma mais poderosa que você pode usar para mudar o mundo.",
+    "A única pessoa livre é aquela que não tem medo do ridículo.",
+    "Às vezes ouço passar o vento; e só de ouvir o vento passar, vale a pena ter nascido.",
+    "Deixa-te disso criança, deixa de orgulho, sossegas, não vês que a vida é um oceano por onde o acaso navega.",
+    "A gente foge da solidão quando tem medo dos próprios pensamentos.",
+    "A arte existe porque a vida não basta.",
+    "Democracia é oportunizar a todos o mesmo ponto de partida. Quanto ao ponto de chegada, depende de cada um.",
+  ];
+
+  List<String> listaAutoresNormal = [
+    "Georg Wilhelm Friedrich Hegel",
+    "Immanuel Kant",
+    "Immanuel Kant",
+    "Immanuel Kant",
+    "Immanuel Kant",
+    "Machado de Assis",
+    "Mário Sérgio Cortella",
+    "Aristóteles",
+    "Nelson Mandela",
+    "Luis Fernando Veríssimo",
+    "Fernando Pessoa",
+    "Gonçalves Dias",
+    "Érico Veríssimo",
+    "Ferreira Gullar",
+    "Fernando Sabino",
+  ];
+
+   List<String> listaFrasesDoidao = [
     "what’s crackin little bitches",
     "Br 153 é a rodovia do diabo",
     "Society is not all bad, we got music and bloodsports",
@@ -171,7 +221,7 @@ class _HomeState extends State<Home> {
 
     ];
 
-  final List<String> listaAutores = [
+  final List<String> listaAutoresDoidao = [
     "Albert Einstein",
     "Karl Marx",
     "Vinícius Pacheco",
@@ -228,11 +278,17 @@ class _HomeState extends State<Home> {
 
   var _oneshot = true;
   var _frase = 0;
+  var _autor = 0;
   var _random = Random();
+  var crazy = false;
 
   void NovaFrase(){
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Clouds()));
+    Navigator.push(context, PageRouteBuilder(
+      pageBuilder: (_,__,___) => Clouds(),
+      transitionDuration: const Duration(milliseconds: 500),
+      transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c),
+    ));
 
     Timer(const Duration(seconds: 1), () {
       Navigator.pop(context);
@@ -240,19 +296,27 @@ class _HomeState extends State<Home> {
 
     Timer(const Duration(seconds: 1),(){
       setState(() {
-
-      if(_oneshot == true){
-        listaFrases.shuffle();
-        _oneshot = false;
-      }
+        if(crazy == true){
+          listaFrases = listaFrasesDoidao;
+          listaAutores = listaAutoresDoidao;
+        }else{
+          listaFrases = listaFrasesNormal;
+          listaAutores = listaAutoresNormal;
+        }
 
       _random = Random();
       if (_frase < (listaFrases.length - 1) && _frase >= 0) {
         _frase += 1;
       }else{
-        listaFrases.shuffle;
+        listaFrasesDoidao.shuffle;
         _frase = 0;
       }
+      if (_autor < (listaAutores.length - 1) && _autor >= 0) {
+        _autor += 1;
+      }else{
+        listaAutoresDoidao.shuffle;
+        _autor = 0;
+        }
 
     });
     });
@@ -267,15 +331,43 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
           centerTitle: false,
           title: const Text("Gerador de Frases Aletórias"),
-          actions: [
+          actions: [ Row(children: [
+
             ElevatedButton(
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueAccent)),
                 onPressed: (){NovaFrase();},
-                child: Text("Nova Frase"))
+                child: const Text("Nova Frase")),
+
+            FlutterSwitch(
+              width: 125,
+              activeText: "Doidão",
+              inactiveText: "Normal",
+              inactiveColor: Colors.blueAccent,
+              activeColor: Colors.black,
+              padding: 8.0,
+              showOnOff: true,
+              value: crazy,
+
+              onToggle: (val){
+                setState((){
+                  if(crazy == true){
+                    crazy = false;
+                  }else{
+                  crazy = true;
+                  }
+            });
+            },
+            )
+          ],
+          )
           ],
           //backgroundColor: Colors.grey,
       ),
       body:
-      Center(
+      Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage("nightsky.jpg"), fit: BoxFit.cover),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(30),
           child: ListView(
@@ -286,7 +378,9 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.only(top: 30),
                 child: Text(
-                  "''" + listaFrases[_frase] + "''",
+                  (
+                  "''" + listaFrases[_frase] + "''"
+                  ),//String
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
@@ -299,7 +393,7 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.topRight,
                 padding: const EdgeInsets.only(right: 30),
                 child: Text(
-                  "- " + listaAutores[_random.nextInt(listaAutores.length)],
+                  "- " + listaAutores[_autor],
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
