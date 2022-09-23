@@ -296,6 +296,13 @@ class _HomeState extends State<Home> {
 
     Timer(const Duration(seconds: 1),(){
       setState(() {
+
+        if(_oneshot == true){
+          listaAutoresDoidao.shuffle();
+          listaFrasesDoidao.shuffle();
+          _oneshot = false;
+        }
+
         if(crazy == true){
           listaFrases = listaFrasesDoidao;
           listaAutores = listaAutoresDoidao;
@@ -382,7 +389,7 @@ class _HomeState extends State<Home> {
                   "''" + listaFrases[_frase] + "''"
                   ),//String
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.lightBlue,
                     fontWeight: FontWeight.w500,
                     fontSize: 30,
                   ),
@@ -395,7 +402,7 @@ class _HomeState extends State<Home> {
                 child: Text(
                   "- " + listaAutores[_autor],
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.lightBlue,
                     fontWeight: FontWeight.w400,
                     fontSize: 20,
                   ),
